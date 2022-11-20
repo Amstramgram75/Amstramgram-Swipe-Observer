@@ -1,0 +1,28 @@
+{
+  "name": "amstramgram-swipe-observer",
+  "version": "1.0.0",
+  "description": "An ultra light ES6 class to detect swipe",
+  "author": "Amstramgram <contact@onfaitdessites.fr>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amstramgram75/Amstramgram-Swipe-Observer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Amstramgram75/Amstramgram-Swipe-Observer/issues"
+  },
+  "homepage": "https://github.com/Amstramgram75/Amstramgram-Swipe-Observer#readme",
+  "license": "MIT",
+  "module": "amstramgramSwipeObserver.js",
+  "files": [
+    "amstramgramSwipeObserver.js"
+  ],
+  "keywords": [
+    "swipe",
+    "detect",
+    "detector",
+    "observe",
+    "observer",
+    "class",
+    "es6"
+  ]
+}
