@@ -1,0 +1,184 @@
+<!doctype html><html lang="en" class="loading"><head><title>Amstramgram Pointer Detector - Demo & docs</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta name="description" content="Ultra light ES6 class to detect used pointer."><meta name="author" content="onfaitdessites.fr"><link rel="apple-touch-icon" sizes="180x180" href="assets/ico/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/ico/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="assets/ico/favicon-16x16.png"><meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0"><style>body,html{background:#121212;height:100%}.loading body{opacity:0;overflow-y:scroll}.loading:after,.loading:before{border-radius:50%;content:"";display:block;height:100px;left:50%;position:fixed;top:50%;width:100px}.loading:before{border:10px solid red;box-sizing:border-box;transform:translate(-50%,-50%)}.loading:after{animation:r 1.5s linear infinite;background:linear-gradient(90deg,#000,rgba(0,0,0,.9) 30%,rgba(0,0,0,.7) 70%,transparent)}@keyframes r{0%{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(1turn)}}</style><script>var d=document,s=d.createElement("script");s.async="false",s.defer="true";try{eval("class test{#private;constructor(){}}"),console.log("Class private fields are supported"),s.type="module",s.src="js/index.js"}catch(e){console.log("Class private fields are not supported"),s.src="js/noModule/index.js"}d.head.appendChild(s);</script><script>if("function"!=typeof window.CustomEvent){console.log("Loading polyfill");var d=document,s=d.createElement("script");s.async="false",s.defer="true",s.src="js/polyfills/polyfill.js",d.head.appendChild(s)}</script></head><body ondragstart="return!1"> <input class="menu-btn" type="checkbox" id="menu-btn" autocomplete="off"><header class="header"> <a href="https://github.com/Amstramgram75/Amstramgram-Swipe-Observor" class="logo">mstramgram <div> <div class="github"></div> <div> <div class="swipe">wipe </div><div class="observer">bserver </div> </div> </div></a> </header><aside> <div class="aside"> <label class="menu-icon" for="menu-btn"><span></span></label> </div></aside> <div class="content-wrapper"> <div class="content"> <h2 id="demo1">Demo 1</h2><div class="demo"><p>Try it...</p></div><h2 id="installation">Installation</h2><h3>npm</h3><div class="code copy"> <pre><code class="language-shellsession">npm i -D amstramgram-swipe-observer</code></pre> </div><p> And then in your javascript : </p><div class="code copy"> <pre><code class="language-javascript">import SwipeObserver from 'Amstramgram-Swipe-Observer'</code></pre> </div><h3>Manually</h3><p class="text"> Just <a href="https://downgit.github.io/#/home?url=https://github.com/Amstramgram75/Amstramgram-Swipe-Observer/blob/master/src/amstramgramSwipeObserver.js" target="_blank">download the source</a> and use it in your project.<br> </p><div class="code"> <pre><code class="language-javascript">import SwipeObserver from './src_folder/amstramgramSwipeObserver'</code></pre> </div><h2 id="usage">Usage</h2><div class="code"> <pre><code class="language-javascript">//Observe swipe events on the container with a swipe class
+const swipeObserver = new SwipeObserver(document.querySelector('.swipe'))
+
+//Add an event listener to the swipe event
+swipeObserver.addEventListener('swipe', (e) => {
+  console.log('SWIPE', e.detail)
+})
+
+//Add an event listener to the swiping event
+swipeObserver.addEventListener('swiping', (e) => {
+  console.log('SWIPING', e.detail)
+})
+
+//Add an event listener to the cancel event
+//This event is dispatched when the horizontal and vertical distances 
+//between the start and the end of the movement 
+//are less than the value set by the threshold option
+swipeObserver.addEventListener('cancel', (e) => {
+  console.log('SWIPE CANCELLED', e.detail)
+})
+
+//Activate the observer
+swipeObserver.on()
+</code></pre> </div><h2 id="event_detail">Event detail</h2><div class="detail"> <p class="text"> The <em>detail</em> property of the <em>swiping</em>, <em>swipe</em> and <em>cancel</em> events contains some usefull informations&nbsp;: </p> <div class="text"> <h5>client</h5> <p> An object with four properties&nbsp;:<br> · <em>x0</em> : clientX value of the starting event.<br> · <em>y0</em> : clientY value of the starting event.<br> · <em>x1</em> : clientX value of the current event.<br> · <em>y1</em> : clientY value of the current event. </p> <h5>delta</h5> <p> An object with two properties&nbsp;:<br> · <em>x</em> : Horizontal distance between starting and current point for <em>swipe</em> and <em>cancel</em> events or between previous and current point for a <em>swiping</em> event.<br> · <em>y</em> : Vertical distance between starting and current point for <em>swipe</em> and <em>cancel</em> events or between previous and current point for a <em>swiping</em> event. </p> <h5>direction</h5> <p> A string indicating the direction of the movement : <em>"left"</em>, <em>"right"</em>, <em>"up"</em>, <em>"down"</em> or an empty string <em>""</em>. </p> <h5>duration</h5> <p> A integer indicating in milliseconds the time elapsed since the beginning of the movement. </p> <h5>events</h5> <p> An object with two properties&nbsp;:<br> · <em>start</em> : the original event.<br> · <em>end</em> : the current event. </p> <h5>orientation</h5> <p> A string indicating the orientation of the movement : <em>"hor"</em> (for horizontal), <em>"vert"</em> (for vertical) or an empty string <em>""</em>. </p> <h5>page</h5> <p> An object with four properties&nbsp;:<br> · <em>x0</em> : pageX value of the starting event.<br> · <em>y0</em> : pageY value of the starting event.<br> · <em>x1</em> : pageX value of the current event.<br> · <em>y1</em> : pageY value of the current event. </p> <h5>pointerType</h5> <p> A string indicating the type of pointer used : <em>"mouse"</em>, <em>"touch"</em> or <em>"pen"</em>. </p> </div> </div><h2 id="api">API</h2><h3>constructor</h3><div class="code"> <pre><code class="language-javascript">/**
+* @param {HTMLElement} el : element to observe
+* @param {Object} [opt = {}]
+*    @property {Boolean} [active = false] - If true, activate the swipe listener
+*    @property {Integer} [threshold = 20] - Minimum distance in pixels 
+*              between the start and the end of the movement to detect a swipe
+*/
+constructor(el, opt = {})
+ 
+//Example
+const swipeObserver = new SwipeObserver(document.querySelector('.swipe'), { active: true })
+</code></pre> </div><h3>on</h3><div class="code"> <pre><code class="language-javascript">/**
+* @description : Activate the swipe listener and/or update the options
+* @param {Object} [opt = {}]
+*    @property {Integer} [threshold = 20] - Minimum distance in pixels 
+*              between the start and the end of the movement to detect a swipe
+*/
+on(opt = {})
+
+//Example
+//Initialize the observer
+const swipeObserver = new SwipeObserver(document.querySelector('.swipe'))
+...
+//And later : update the options and activate the observer
+swipeObserver.on({ threshold: 40})
+</code></pre> </div><h3>off</h3><div class="code"> <pre><code class="language-javascript">/**
+* @description : Deactivate the swipe listener
+*/
+off()
+  
+//Example
+const swipeObserver = new SwipeObserver(document.querySelector('.swipe'), { active: true })
+...
+//And later
+swipeObserver.off()
+</code></pre> </div><h3>active</h3><div class="code"> <pre><code class="language-javascript">/**
+* @getter : Return the state of the observer
+*/
+  
+//Example
+const swipeObserver = new SwipeObserver(document.querySelector('.swipe'))
+console.log(swipeObserver.active)//Output false
+...
+//And later
+swipeObserver.on()
+console.log(swipeObserver.active)//Output true
+</code></pre> </div><h3>threshold</h3><div class="code"> <pre><code class="language-javascript">/**
+* @getter : Return the threshold value of the observer
+* Threshold is the minimum distance in pixels 
+* between the start and the end of the movement to detect a swipe
+*/
+  
+//Example
+const swipeObserver = new SwipeObserver(document.querySelector('.swipe'))
+console.log(swipeObserver.threshold)//Output default value : 20
+...
+//And later : update the threshold value and activate the observer
+swipeObserver.on({ threshold: 40 })
+console.log(swipeObserver.threshold)//Output 40
+</code></pre> </div><h2 id="custom_event">Custom Event</h2><div class="text"> <p> The class uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent" target="_blank">CustomEvent interface</a> which is not understood by some older browsers like Internet Explorer. </p> <p> So, if you want to support those oldies, you have to polyfill the CustomEvent interface. </p> <p> Just add somewhere inside the <em>&lt;head&gt;</em> of your <em>html</em>&nbsp;: </p> </div><div class="code copy"> <pre><code class="language-html">&lt;script&gt;
+  if (typeof window.CustomEvent !== "function") {
+    var d = document, s = d.createElement('script');
+    s.async = "false";
+    s.defer = "true";
+    s.src = "javascript_polyfills_folder_path/customEventPolyfill.js";
+    d.head.appendChild(s);
+  }
+&lt;/script&gt;
+</code></pre> </div><p class="text"> And create a <em>customEventPolyfill.js</em> with the folowing content : </p><div class="code copy"> <pre><code class="language-javascript">(function(){
+  if (typeof window.CustomEvent !== "function") {
+    function CustomEvent ( event, params ) {
+      params = params || { bubbles: false, cancelable: false, detail: null };
+      var evt = document.createEvent( 'CustomEvent' );
+      evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+      return evt;
+    }
+    window.CustomEvent = CustomEvent;
+  }
+})();</code></pre> </div><h2 id="prevent_scroll">Prevent scroll</h2><div class="text"> <p> Basic truism : the swiping/swipe events are emitted while/after moving the pointer.<br> But, on touchscreen, such gestures are interpreted by the system as scroll requests.<br> This is not really a problem if the movement is horizontal and if the width of the body does not exceed that of the device because there is <i>nothing to scroll</i>.<br> But in the case of a vertical swipe, asking the browser to respond with a specific action rather than scrolling requires some diplomacy.<br> Nowadays, the easiest way to prevent gestures from being captured by the system is to use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action" target="_blank">touch-action</a> css property.<br> It's now supported by all modern mobile browsers as you can see below&nbsp;: </p> <div class="img-container" style="padding-bottom:29%"> <a href="https://caniuse.com/css-touch-action" target="_blank"> <img src="assets/img/CSS-touch-action-support.jpg"> </a> </div> <p> By setting <em>touch-action</em> to <em>none</em>, the browser will ignore all touch events and therefore will not respond with a scroll when swiping vertically.<br> It's a little brutal but terribly effective.<br> You can make sure by playing with the first demo at the top of this page which uses precisely this method.<br> </p> <p> The major drawback is that if the user still wants to go down the page, he must scroll outside the observed element.<br> The operation is made particularly tricky or even impossible if the element in question takes up most of the space available on the screen.<br> The only way to handle this kind of situation is to resort to javascript and conditionally change the <em>touch-action</em> property value or call the <em>preventDefault()</em> method on the touchmove event to block scrolling.<br> This is what is done in the second demo below.<br> </p> <p> If you need to support older devices (as iOS before version 13), the <a href="https://www.npmjs.com/package/body-scroll-lock" target="_blank">body-scroll-lock package</a> is a complete and well-know solution.<br> You might also be interested in a workaround exposed in <a href="https://markus.oberlehner.net/blog/simple-solution-to-prevent-body-scrolling-on-ios/" target="_blank">this article</a>. </p> </div><h2 id="demo2">Demo 2</h2><div class="demo demo2"><div class="top"><span>Scroll down ENABLED</span></div><div class="bottom"><span>Scroll up ENABLED</span></div><span>Scroll down DISABLED</span><p>Try it...</p><span>Scroll up DISABLED</span></div><div class="text"> <p> Here's the idea : if the user performs two successive vertical swipes in the same direction, the first is not detect by the browser as a scroll request but the second is.<br> To achieve this, after a vertical swipe detection, we simply change the value of the <em>touch-action</em> property from <em>none</em> to <em>pan-up</em> or <em>pan-down</em> depending on the direction of movement.<br> </p> <p> Sound too easy ?<br> You're right !<br> </p> <p> <a href="https://caniuse.com/?search=pan-up" target="_blank">iOS does not understand <em>pan-up</em> and <em>pan-down</em> values.</a><br> </p> <p> The only workaround we have for it, is to call the <em>preventDefault()</em> method on the original <em>touchmove</em> event in the <em>swiping</em> listener of our observer. </p> </div><div class="code copy"> <pre><code class="language-javascript">//Store the last swipe direction ('left', 'right', 'up', 'down' or '')
+let previousDir = ''
+//Test the support of pan-up value for the css touch-action property
+//First, we create a test container
+const testFullTouchActionSupport = d.createElement('div')
+//we set its touch-action property to pan-up
+testFullTouchActionSupport.style.touchAction = 'pan-up'
+//fullTouchActionSupport will be true if the pan-up value is understood by the browser
+const fullTouchActionSupport = (testFullTouchActionSupport.style.touchAction === 'pan-up')
+//In this case, we set the touch-action property to none until we detect a vertical swipe
+//Scroll is blocked
+if (fullTouchActionSupport) demo2Element.style.touchAction = 'none'
+//Log the test result
+console.log(`Css touch-action property ${fullTouchActionSupport ? 'supports' : 'does not support'} pan-up and pan-down values`)
+
+
+//Swiping listener
+demo2Element.addEventListener('swiping', (e) => {
+  //If this is a vertical swipe 
+  //and if its direction is different from the last swipe detected
+  if (e.detail.pointerType != 'mouse' && e.detail.orientation == 'vert' && previousDir != e.detail.direction) {
+    //e.detail.events.end is the original touchmove event
+    const ev = e.detail.events.end
+    //If the event is cancelable
+    if (ev.cancelable) {
+      //we prevent it
+      ev.preventDefault()
+      console.log('Scroll has been blocked.')
+    } else {
+      console.log("Scroll can't be blocked.")
+    }
+  }
+  textDemo2.innerHTML = 'SWIPING ' + e.detail.direction.toUpperCase()
+})
+
+//Swipe listener
+demo2Element.addEventListener('swipe', (e) => {
+  if (e.detail.pointerType != 'mouse') {
+    const dir = e.detail.direction
+    //If it's a horizontal swipe
+    if (e.detail.orientation == 'hor') {
+      //Reset the container to its default state
+      reset()
+      //If it's a vertical swipe 
+      //and if its direction is different from the last swipe detected
+    } else if (previousDir != dir) {
+      if (dir == 'down') {
+        //Show the top banner
+        demo2Element.classList.add('show_top')
+        //Hide the bottom banner
+        demo2Element.classList.remove('show_bottom')
+      } else {
+        //Hide the top banner
+        demo2Element.classList.remove('show_top')
+        //Show the bottom banner
+        demo2Element.classList.add('show_bottom')
+      }
+      //If pan-up value is supported
+      if (fullTouchActionSupport) {
+        const touchActionDirection = (dir == 'down') ? 'up' : 'down'
+        //Update the touch-action property
+        demo2Element.style.touchAction = 'pan-' + touchActionDirection
+      }
+    }
+    previousDir = dir
+  }
+  textDemo2.innerHTML = 'SWIPE ' + e.detail.direction.toUpperCase()
+})
+
+demo2Element.addEventListener('cancel', (e) => {
+  textDemo2.innerHTML = 'CANCEL'
+  previousDir = ''
+  reset()
+})
+
+function reset() {
+  //Reset the touc-action property to none
+  if (fullTouchActionSupport) demo2Element.style.touchAction = 'none'
+  //Hide the top banner
+  demo2Element.classList.remove('show_top')
+  //Hide the bottom banner
+  demo2Element.classList.remove('show_bottom')
+}</code></pre> </div><div></div> </div> </div> <div class="up"></div> <link rel="stylesheet" href="css/main.css" media="print" onload="this.media=&quot;all&quot;">  </body></html>
