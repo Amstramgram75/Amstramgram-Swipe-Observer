@@ -5,37 +5,19 @@ import Prism from 'prismjs'
 import pointerDetector from './common/amstramgramPointerDetector'
 import SwipeObserver from '../../src/amstramgramSwipeObserver'
 
-/**
- * TODO :
- * Demo 2 works on IOS>=14, tested on Android >= 7
- */
-
 const
   w = window,
   d = document
 
 pointerDetector.class('amst__mouse')
 
-//https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
-//Test via a getter in the options object to see if the passive property is accessed
-let supportsPassive = false
-try {
-  const opts = Object.defineProperty({}, 'passive', {
-    get: function () {
-      supportsPassive = true
-    }
-  })
-  w.addEventListener("testPassive", null, opts)
-  w.removeEventListener("testPassive", null, opts)
-} catch (e) { }
-
 
 //Redirect to error.html if the browser does not understand our code...
-// w.addEventListener('error', e => {
-//   const nameModule = w.location.origin + '/js/index.js',
-//     nameNoModule = w.location.origin + '/js/noModule/index.js'
-//   if (e.filename == nameModule || e.filename == nameNoModule) w.location.href = './error.html' 
-// })
+w.addEventListener('error', e => {
+  const nameModule = w.location.origin + '/js/index.js',
+    nameNoModule = w.location.origin + '/js/noModule/index.js'
+  if (e.filename == nameModule || e.filename == nameNoModule) w.location.href = './error.html' 
+})
 
 
 console.log(`Pointer Events are ${w.PointerEvent ? '' : 'not '}supported`)
@@ -66,8 +48,7 @@ function init() {
     demo2Element = d.querySelector('.content .demo.demo2'),
     textDemo1 = demo1Element.querySelector('p'),
     textDemo2 = demo2Element.querySelector('p'),
-    demo2 = new SwipeObserver(demo2Element, { ps: false })
-  // demo2 = new SwipeObserver(demo2Element, {ps: supportsPassive})
+    demo2 = new SwipeObserver(demo2Element)
   new SwipeObserver(demo1Element, { active: true })
   demo1Element.addEventListener('swiping', function (e) {
     console.log('SWIPING', e.detail)
